@@ -1,4 +1,4 @@
-# Perfectphase.Azure.AppService.EasyAuth
+# Perfectphase.Azure.AppService.EasyAuth [![NuGet](https://img.shields.io/nuget/v/Perfectphase.Azure.AppService.EasyAuth)](https://www.nuget.org/packages/Perfectphase.Azure.AppService.EasyAuth/)
 
 Azure App Service Authentication (EasyAuth) middleware for ASP.NET CORE that implements support for Authenticate, Challenge, Forbidden and SignOut. 
 

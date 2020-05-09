@@ -10,6 +10,10 @@
     <PackageTags>azure;appservice;easyauth</PackageTags>
     <Authors>Stephen Woolhead</Authors>
     <Company />
+    <RepositoryUrl>https://github.com/perfectphase/Perfectphase.Azure.AppService.EasyAuth</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/perfectphase/Perfectphase.Azure.AppService.EasyAuth</PackageProjectUrl>
+    <Copyright>Copyright © Stephen Woolhead 2020</Copyright>
+    <NeutralLanguage>en-GB</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,6 +2,8 @@
 
 Azure App Service Authentication (EasyAuth) middleware for ASP.NET CORE that implements support for Authenticate, Challenge, Forbidden and SignOut. 
 
+For the moment this project only supports AzureAd, not Google, twitter etc.
+
 ## What is `EasyAuth`?
 
 Azure `App Service` has a feature to turn on Authentication on top of your application code. This is useful if you don't want to handle the nitty gritty of auth. It's meant to be a quick and easy way to put an authentication layer above an application hosted on an app service. More details can be found here https://docs.microsoft.com/en-us/azure/app-service/overview-authentication-authorization.
@@ -17,7 +19,7 @@ services.AddAuthentication(AzureAdDefaults.AuthenticationScheme)
     .AddEasyAuthAzureAd());
 ```
 
-The middleware also supports the Challenge, Forbidden and SignOut handlers to you will be redirected to the correct endpoints supported by EasyAuth if you chose not to have EasyAuth force the user to authenticate for you.
+The middleware also supports the Challenge, Forbidden and SignOut handlers so you will be redirected to the correct endpoints supported by EasyAuth if you chose not to have EasyAuth force the user to authenticate for you.
 
 # Development
 
@@ -42,10 +44,10 @@ else
 }
 ```
 
-This middleware adds some default claims for you but you can add extra or remove existing if you want.
+This middleware adds some default claims for you but you can add extra or remove existing ones if you want.
 
 # App Roles
-If you've defined custom appRoles in your Enterprise app in Azure Add, you need to override the claim type used to map to the roles as below
+If you've defined custom appRoles in your Enterprise app's manifest in Azure AD, you need to override the claim type used to map to the roles as below
 
 ```csharp
 services.AddAuthentication(AzureAdDefaults.AuthenticationScheme)

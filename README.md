@@ -4,13 +4,13 @@ Azure App Service Authentication (EasyAuth) middleware for ASP.NET CORE that imp
 
 For the moment this project only supports AzureAd, not Google, twitter etc.
 
-## What is `EasyAuth`?
+## What is EasyAuth?
 
 Azure `App Service` has a feature to turn on Authentication on top of your application code. This is useful if you don't want to handle the nitty gritty of auth. It's meant to be a quick and easy way to put an authentication layer above an application hosted on an app service. More details can be found here https://docs.microsoft.com/en-us/azure/app-service/overview-authentication-authorization.
 
 There is a how to get started tutorial [here](https://www.benday.com/2018/05/17/walkthrough-part-2-configure-app-service-authentication-for-your-azure-web-app/).
 
-# Why this project
+## Why this project
 
 This library adds middleware that reads the `X-MS-CLIENT-PRINCIPAL` header and extracts the claims and creates a ClaimsPrincipal that can be used by the ASP.NET CORE identity system.
 
@@ -21,7 +21,7 @@ services.AddAuthentication(AzureAdDefaults.AuthenticationScheme)
 
 The middleware also supports the Challenge, Forbidden and SignOut handlers so you will be redirected to the correct endpoints supported by EasyAuth if you chose not to have EasyAuth force the user to authenticate for you.
 
-# Development
+## Development
 
 Because EasyAuth does all the hard work of dealing with OAuth2/OpenIdConnect for you, this cause an issue on your local development box, as the magic `X-MS-CLIENT-PRINCIPAL` header will not be available.  To make local development a bit easier you can use the `Development` auth handler.
 
@@ -46,7 +46,7 @@ else
 
 This middleware adds some default claims for you but you can add extra or remove existing ones if you want.
 
-# App Roles
+## App Roles
 If you've defined custom appRoles in your Enterprise app's manifest in Azure AD, you need to override the claim type used to map to the roles as below
 
 ```csharp
@@ -58,7 +58,7 @@ services.AddAuthentication(AzureAdDefaults.AuthenticationScheme)
 });
 ```
 
-# Selectively restricting access
+## Selectively restricting access
 
 The middleware just creates a standard `ClaimsPrincipal` and `ClaimsIdentity` which gets assigned to the `Request.User` object, so all the standard ASP.NET CORE methods work such as the `[Authorize]` attribute or conventions for razor pages, e.g.
 

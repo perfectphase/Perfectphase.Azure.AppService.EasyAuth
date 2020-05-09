@@ -1,0 +1,93 @@
+﻿@page
+@using System.Security.Claims
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @User?.Identity?.Name</h1>
+    <p>Test site for <a href="https://github.com/perfectphase/Perfectphase.Azure.AppService.EasyAuth">Perfectphase.Azure.AppService.EasyAuth</a>.</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-md-center">
+        <div class="col col-3">
+            <a class="btn btn-primary btn-lg w-100" asp-page-handler="Login">Login with Azure AD</a>
+        </div>
+
+        <div class="col col-3">
+            <a class="btn btn-primary btn-lg w-100" asp-page-handler="Logout">Logout of Azure AD</a>
+        </div>
+
+        <div class="col col-3">
+            <a class="btn btn-primary btn-lg w-100" asp-page="RestrictedPage">Restricted page</a>
+        </div>
+
+        <div class="col col-3">
+            <a class="btn btn-primary btn-lg w-100" asp-page="RequiresRole">Requires Role</a>
+        </div>
+    </div>
+</div>
+
+<h2 class="mt-5">Headers</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr class="d-flex">
+            <th scope="col" class="col-3">Key</th>
+            <th scope="col" class="col-9">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var header in Request.Headers)
+        {
+            <tr class="d-flex">
+                <th scope="row" class="col-3" style="word-break: break-all;">@header.Key</th>
+                <td class="col-9" style="word-break: break-all;">@header.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2 class="mt-5">Claims</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr class="d-flex">
+            <th scope="col" class="col-3">Type</th>
+            <th scope="col" class="col-9" style="word-break: break-all;">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in ((ClaimsIdentity)User.Identity).Claims)
+        {
+            <tr class="d-flex">
+                <th scope="row" class="col-3" style="word-break: break-all;">@claim.Type</th>
+                <td class="col-9" style="word-break: break-all;">@claim.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2 class="mt-5">Roles</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr class="d-flex">
+            <th scope="col" class="col-3">Type</th>
+            <th scope="col" class="col-9" style="word-break: break-all;">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="d-flex">
+            <th scope="row" class="col-3">Role1</th>
+            <td class="col-9">@User.IsInRole("role1")</td>
+        </tr>
+        <tr class="d-flex">
+            <th scope="row" class="col-3">Role2</th>
+            <td class="col-9">@User.IsInRole("role2")</td>
+        </tr>
+        <tr class="d-flex">
+            <th scope="row" class="col-3">Role3</th>
+            <td class="col-9">@User.IsInRole("role3")</td>
+        </tr>
+    </tbody>
+</table>

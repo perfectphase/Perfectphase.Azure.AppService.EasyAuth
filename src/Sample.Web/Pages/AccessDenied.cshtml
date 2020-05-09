@@ -1,0 +1,31 @@
+﻿@page
+@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<h1 class="text-danger">Access Denied.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+<h2 class="mt-5">Roles</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr class="d-flex">
+            <th scope="col" class="col-3">Type</th>
+            <th scope="col" class="col-9" style="word-break: break-all;">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="d-flex">
+            <th scope="row" class="col-3">Role1</th>
+            <td class="col-9">@User.IsInRole("role1")</td>
+        </tr>
+        <tr class="d-flex">
+            <th scope="row" class="col-3">Role2</th>
+            <td class="col-9">@User.IsInRole("role2")</td>
+        </tr>
+        <tr class="d-flex">
+            <th scope="row" class="col-3">Role3</th>
+            <td class="col-9">@User.IsInRole("role3")</td>
+        </tr>
+    </tbody>
+</table>

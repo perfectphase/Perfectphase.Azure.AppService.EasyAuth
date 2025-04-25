@@ -7,26 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Sample.Web.Pages
+namespace Sample.Web.Pages;
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    public IndexModel()
     {
-        public IndexModel()
-        {
-        }
+    }
 
-        public void OnGet()
-        {
-        }
+    public void OnGet()
+    {
+    }
 
-        public IActionResult OnGetLogin()
-        {
-            return Challenge(new AuthenticationProperties { RedirectUri = "/" });
-        }
+    public IActionResult OnGetLogin()
+    {
+        return Challenge(new AuthenticationProperties { RedirectUri = "/" });
+    }
 
-        public IActionResult OnGetLogout()
-        {
-            return SignOut(new AuthenticationProperties { RedirectUri = "/"});
-        }
+    public IActionResult OnGetLogout()
+    {
+        return SignOut(new AuthenticationProperties { RedirectUri = "/"});
     }
 }

@@ -1,13 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace Perfectphase.Azure.AppService.EasyAuth.Shared
+namespace Perfectphase.Azure.AppService.EasyAuth.Shared;
+
+public class ClaimModel
 {
-    public class ClaimModel
-    {
-        [JsonProperty("typ")]
-        public string Type { get; set; }
+    [JsonPropertyName("typ")]
+    public required string Type { get; init; }
 
-        [JsonProperty("val")]
-        public string Value { get; set; }
-    }
+    [JsonPropertyName("val")]
+    public required string Value { get; init; }
 }

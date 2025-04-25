@@ -58,7 +58,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var claim in ((ClaimsIdentity)User.Identity).Claims)
+        @foreach (var claim in (User?.Identity as ClaimsIdentity)?.Claims ?? [])
         {
             <tr class="d-flex">
                 <th scope="row" class="col-3" style="word-break: break-all;">@claim.Type</th>
@@ -79,15 +79,15 @@
     <tbody>
         <tr class="d-flex">
             <th scope="row" class="col-3">Role1</th>
-            <td class="col-9">@User.IsInRole("role1")</td>
+            <td class="col-9">@User?.IsInRole("role1") ?? false</td>
         </tr>
         <tr class="d-flex">
             <th scope="row" class="col-3">Role2</th>
-            <td class="col-9">@User.IsInRole("role2")</td>
+            <td class="col-9">@User?.IsInRole("role2") ?? false</td>
         </tr>
         <tr class="d-flex">
             <th scope="row" class="col-3">Role3</th>
-            <td class="col-9">@User.IsInRole("role3")</td>
+            <td class="col-9">@User?.IsInRole("role3") ?? false</td>
         </tr>
     </tbody>
 </table>

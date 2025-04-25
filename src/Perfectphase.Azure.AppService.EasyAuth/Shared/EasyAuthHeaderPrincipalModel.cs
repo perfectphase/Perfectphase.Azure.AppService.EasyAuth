@@ -1,19 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿
+using System.Text.Json.Serialization;
 
-namespace Perfectphase.Azure.AppService.EasyAuth.Shared
+namespace Perfectphase.Azure.AppService.EasyAuth.Shared;
+
+public class EasyAuthPrincipalModel
 {
-    public class EasyAuthPrincipalModel
-    {
-        [JsonProperty("auth_typ")]
-        public string AuthenticationType { get; set; }
+    [JsonPropertyName("auth_typ")]
+    public required string AuthenticationType { get; init; }
 
-        [JsonProperty("name_typ")]
-        public string NameClaimType { get; set; }
+    [JsonPropertyName("name_typ")]
+    public required string NameClaimType { get; init; }
 
-        [JsonProperty("role_typ")]
-        public string RoleClaimType { get; set; }
+    [JsonPropertyName("role_typ")]
+    public required string RoleClaimType { get; init; }
 
-        [JsonProperty("claims")]
-        public ClaimModel[] Claims { get; set; }
-    }
+    [JsonPropertyName("claims")]
+    public required ClaimModel[] Claims { get; init; }
 }
